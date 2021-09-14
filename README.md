@@ -1,2 +1,4 @@
 # Phragmites-australis-transcriptome-optimal-assembly
-Workflow and scripts used for the assembly of the Phragmites australis transcriptome.
+Workflow and scripts used for the optimal assembly of the Phragmites australis transcriptome.
+
+

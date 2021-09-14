@@ -16,7 +16,7 @@ Multiple types of tissue were used to construct forty-nine *P. australis* transc
 9. [*Setaria italica* transcription factors list from PlantTFDB v5.0](http://planttfdb.gao-lab.org/download/TF_list/Sit_TF_list.txt.gz)
 
 ## Software
-skewer-0.22, Trinity-2.8.4, FastQC v0.11.8, shannon-0.02, transabyss-2.0.1, SOAPdenovo-Trans-v1.03, GapCloser-v1.12, bowtie2-2.3.0, CD-HIT-4.8.1, EvidentialGene17dec14, kallisto-0.46.1, ncbi-blast-2.8.1+, DETONATE-1.11, hmmer-3.3, BUSCO 4.0.5, rnaQUAST-2.0.0, q30-master, TransDecoder-v5.5.0, Trinotate-v3.2.1, sqlite-snapshot-202101010144, signalp-4.1g, tmhmm-2.0c, DIAMOND v2.0.6, rsem-1.2.19, Venny, WEGO 2.0, GhostKOALA, MISA v2.1
+skewer-0.22, Trinity-2.8.4, FastQC v0.11.8, STAR-2.5.2b, shannon-0.02, transabyss-2.0.1, SOAPdenovo-Trans-v1.03, GapCloser-v1.12, bowtie2-2.3.0, CD-HIT-4.8.1, EvidentialGene17dec14, kallisto-0.46.1, ncbi-blast-2.8.1+, DETONATE-1.11, hmmer-3.3, BUSCO 4.0.5, rnaQUAST-2.0.0, q30-master, TransDecoder-v5.5.0, Trinotate-v3.2.1, sqlite-snapshot-202101010144, signalp-4.1g, tmhmm-2.0c, DIAMOND v2.0.6, rsem-1.2.19, Venny, WEGO 2.0, GhostKOALA, MISA v2.1
 
 ## Data Analyses
 ### 1. Before assembly
@@ -25,9 +25,39 @@ skewer-0.22, Trinity-2.8.4, FastQC v0.11.8, shannon-0.02, transabyss-2.0.1, SOAP
     `skewer-master/skewer -m pe -l 50 Phragmites_RNA/raw_data/PR_R1.fastq Phragmites_RNA/raw_data/PR_R2.fastq -o Phragmites_RNA/raw_data/skewer/PR`
 - Use FastQC to assess the quality of trimmed reads
   
-    ```FastQC/fastqc -o Phragmites_RNA/fastqc -f fastq Phragmites_RNA/raw_data/skewer/PF_R1_paired.fastq Phragmites_RNA/raw_data/skewer/PF_R2_paired.fastq Phragmites_RNA/raw_data/skewer/PL-trimmed-pair1.fastq Phragmites_RNA/raw_data/skewer/PL-trimmed-pair2.fastq Phragmites_RNA/raw_data/skewer/PM-trimmed-pair1.fastq Phragmites_RNA/raw_data/skewer/PM-trimmed-pair2.fastq Phragmites_RNA/raw_data/skewer/PR-trimmed-pair1.fastq Phragmites_RNA/raw_data/skewer/PR-trimmed-pair2.fastq ```
+    ```FastQC/fastqc -o Phragmites_RNA/fastqc -f fastq Phragmites_RNA/raw_data/skewer/PF_trimmed_pair2.fastq Phragmites_RNA/raw_data/skewer/PF_trimmed_pair1.fastq Phragmites_RNA/raw_data/skewer/PL-trimmed-pair1.fastq Phragmites_RNA/raw_data/skewer/PL-trimmed-pair2.fastq Phragmites_RNA/raw_data/skewer/PM-trimmed-pair1.fastq Phragmites_RNA/raw_data/skewer/PM-trimmed-pair2.fastq Phragmites_RNA/raw_data/skewer/PR-trimmed-pair1.fastq Phragmites_RNA/raw_data/skewer/PR-trimmed-pair2.fastq ```
+
+- Use q30-master to caculate the nucleotide percentage with quality higher than 30
+ 
+    `q30-master/q30.py Phragmites_RNA/raw_data/skewer/PR-trimmed-pair1.fastq > Phragmites_RNA/q30/PR_1_q30.stat
+    
+### 2. *DE novo* transcriptome assembly using different tools and parameters
+- Combined all the trimmed reads
+  
+    ```cat Phragmites_RNA/raw_data/*trimmed-pair1.fastq > Phragmites_RNA/combined_read/skewer_all_P1.fq```
+    
+    ```cat Phragmites_RNA/raw_data/*trimmed-pair2.fastq > Phragmites_RNA/combined_read/skewer_all_P2.fq```
+- Use Trinity *de novo* transcriptome assembly
+    
+    ```Trinity --seqType fq --left Phragmites_RNA/combined_read/skewer_all_P1.fq --right Phragmites_RNA/combined_read/skewer_all_P2.fq --SS_lib_type FR --max_memory 100G --CPU 8 --output Phragmites_RNA/trinity_skewer```
+    
+- Use Trinity *S. italica* genome-guided *de novo* transcriptome assembly
+
+    - Use STAR to build *S. italica* genome index, align trimmed data
+        
+        ```STAR-2.5.2b/bin/Linux_x86_64/STAR --runThreadN 8 --runMode genomeGenerate --genomeDir Phragmites_RNA/raw_data/Sitalica_index2/ --genomeFastaFiles Phragmites_RNA/raw_data/Sitalica/v2.2/Sitalica_312_v2.fa```
+        
+        ```STAR-2.5.2b/bin/Linux_x86_64/STAR --runThreadN 8 --runMode alignReads --genomeDir Phragmites_RNA/raw_data/Sitalica_index2 --readFilesIn Phragmites_RNA/combined_read/skewer_all_P1.fq Phragmites_RNA/combined_read/skewer_all_P2.fq --outSAMtype BAM SortedByCoordinate --outFileNamePrefix Phragmites_RNA/star_align/skewer --limitBAMsortRAM 62000000000```
+     
+    - Using the generated bam file to perfrom the *S. italica* genome-guided *de novo* transcriptome assembly
+    
+        ```Trinity --genome_guided_bam Phragmites_RNA/star_align/skewer_Sitalica_align/skewerAligned.sortedByCoord.out.bam --genome_guided_max_intron 10000 --seqType fq --left Phragmites_RNA/combined_read/skewer_all_P1.fq --right Phragmites_RNA/combined_read/skewer_all_P2.fq --SS_lib_type FR --max_memory 50G --CPU 8 --output Phragmites_RNA/trinity_all_skewer_genome_guide```
+        
+- 
 
 
 
+
+    
 
 

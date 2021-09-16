@@ -51,6 +51,49 @@
       
      busco/bin/busco -m transcriptome -i Phragmites_RNA/all_assemlies/cdhit/cdhit.fa -o OUTPUT -l embryophyta_odb10 --config $HOME/busco/config/myconfig.ini -f
 
+## 6. Count the full length transcripts with transcriptome as compared with Uniprot Swiss-Prot
+
+#### a. Use Uniprot Swiss-Prot database to build a blastable database 
+
+     ncbi-blast-2.8.1+/bin/makeblastdb -in uniprot_sprot -dbtype prot -out Phragmites_RNA/count_full_length/uniprot_sprot.fasta
+     
+#### b. Run the blast alignment 
+     
+     ncbi-blast-2.8.1+/bin/blastx -query Phragmites_RNA/all_assemlies/cdhit/cdhit.fasta -db Phragmites_RNA/count_full_length/uniprot_sprot.fasta -out Phragmites_RNA/assessing_assembly/full_length_transcript/cdhit/cdhit_blastx.outfmt6 -evalue 1e-20 -num_threads 8 -max_target_seqs 1 -outfmt 6
+     
+#### c. Use trinity script to examine the percent of the target being aligned to 
+     
+     trinityrnaseq-Trinity-v2.8.4/util/analyze_blastPlus_topHit_coverage.pl Phragmites_RNA/assessing_assembly/full_length_transcript/cdhit/cdhit_blastx.outfmt6 Phragmites_RNA/all_assemlies/cdhit/cdhit.fasta uniprot_sprot.fasta
+     
+
+## 7. Count the full length transcripts with transcriptome as compared with *S. italica* transcriptome file
+
+#### a. Use *S. italica* transcriptome file to build a blastable database 
+
+	ncbi-blast-2.8.1+/bin/makeblastdb -in Phragmites_RNA/raw_data/Sitalica/v2.2/annotation/Sitalica_312_v2.2.transcript.fa -dbtype nucl -parse_seqids -out Phragmites_RNA/Sitalica_transcript
+     
+#### b. Run the blast alignment 
+     
+	ncbi-blast-2.8.1+/bin/blastn -query Phragmites_RNA/all_assemlies/cdhit/cdhit.fasta -db Phragmites_RNA/Sitalica_transcript/Sitalica_transcript -out Phragmites_RNA/assessing_assembly/full_length_transcript/Sitalica/cdhit/cdhit_blastn_sitalica.outfmt6 -evalue 1e-20 -num_threads 8 -max_target_seqs 1 -outfmt 6	 	   	  
+     
+#### c. Use trinity script to examine the percent of the target being aligned to 
+     
+ 	trinityrnaseq-Trinity-v2.8.4/util/analyze_blastPlus_topHit_coverage.pl Phragmites_RNA/assessing_assembly/full_length_transcript/Sitalica/cdhit/cdhit_blastn_sitalica.outfmt6 Phragmites_RNA/all_assemlies/cdhit/cdhit.fasta Phragmites_RNA/raw_data/Sitalica/v2.2/annotation/Sitalica_312_v2.2.transcript.fa
+
+## 8. Use DETONATE to compute the DETONATE score
+   
+    detonate-1.11-precompiled/rsem-eval/rsem-eval-estimate-transcript-length-distribution Phragmites_RNA/all_assemlies/cdhit/cdhit.fa Phragmites_RNA/assessing_assembly/Detonate/cd_hit/parameter_file
+    detonate-1.11-precompiled/rsem-eval/rsem-eval-calculate-score -p 8 --transcript-length-parameters Phragmites_RNA/assessing_assembly/Detonate/cd_hit/parameter_file --paired-end Phragmites_RNA/combined_read/skewer_all_P1.fq Phragmites_RNA/combined_read/skewer_all_P2.fq Phragmites_RNA/all_assemlies/cdhit/cdhit.fa Phragmites_RNA/assessing_assembly/Detonate/cd_hit/cd_hit 142
+    
+## 9. Use rnaQUAST to check the transcript length distribution within transcriptome and other statistics
+   
+    rnaQUAST-2.0.0/rnaQUAST.py --transcripts Phragmites_RNA/all_assemlies/cdhit/cdhit.fa -1 Phragmites_RNA/combined_read/skewer_all_P1.fq -2 Phragmites_RNA/combined_read/skewer_all_P2.fq -o Phragmites_RNA/assessing_assembly/rnaQUAST/cdhit -t 8
+
+
+
+
+
+
 
 
 

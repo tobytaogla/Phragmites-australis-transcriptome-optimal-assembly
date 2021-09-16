@@ -18,7 +18,7 @@ Multiple types of tissue were used to construct forty-nine *P. australis* transc
 ## Software
 skewer-0.22, Trinity-2.8.4, FastQC v0.11.8, STAR-2.5.2b, shannon-0.02, transabyss-2.0.1, SOAPdenovo-Trans-v1.03, GapCloser-v1.12, bowtie2-2.3.0, CD-HIT-4.8.1, EvidentialGene17dec14, kallisto-0.46.1, ncbi-blast-2.8.1+, DETONATE-1.11, hmmer-3.3, BUSCO 4.0.5, rnaQUAST-2.0.0, q30-master, TransDecoder-v5.5.0, Trinotate-v3.2.1, sqlite-snapshot-202101010144, signalp-4.1g, tmhmm-2.0c, DIAMOND v2.0.6, rsem-1.2.19, Venny, WEGO 2.0, GhostKOALA, MISA v2.1
 
-## Data Analyses
+## Data Analyses Flow
 ### 1. [Before assembly](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/Before_assemly.md)
 
     

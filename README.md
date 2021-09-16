@@ -24,6 +24,8 @@ skewer-0.22, Trinity-2.8.4, FastQC v0.11.8, STAR-2.5.2b, shannon-0.02, transabys
     
 ### 2. [*De novo* transcriptome assembly using different tools and parameters](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/De_novo_transcriptome_assembly.md)
 
+### 3. [EvidentialGene pipeline treament](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/EvidentialGene_pipeline_treatment.md) 
+
 
 
 

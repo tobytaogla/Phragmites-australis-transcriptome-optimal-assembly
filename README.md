@@ -22,29 +22,7 @@ skewer-0.22, Trinity-2.8.4, FastQC v0.11.8, STAR-2.5.2b, shannon-0.02, transabys
 ### 1. [Before assembly](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/Before_assemly.md)
 
     
-### 2. *De novo* transcriptome assembly using different tools and parameters
-- Combined all the trimmed reads
-  
-    ```cat Phragmites_RNA/raw_data/*trimmed-pair1.fastq > Phragmites_RNA/combined_read/skewer_all_P1.fq```
-    
-    ```cat Phragmites_RNA/raw_data/*trimmed-pair2.fastq > Phragmites_RNA/combined_read/skewer_all_P2.fq```
-- Use Trinity *de novo* transcriptome assembly
-    
-    ```Trinity --seqType fq --left Phragmites_RNA/combined_read/skewer_all_P1.fq --right Phragmites_RNA/combined_read/skewer_all_P2.fq --SS_lib_type FR --max_memory 100G --CPU 8 --output Phragmites_RNA/trinity_skewer```
-    
-- Use Trinity to perform *S. italica* genome-guided *de novo* transcriptome assembly
-
-    - Use STAR to build *S. italica* genome index, align trimmed data
-
-    ```STAR-2.5.2b/bin/Linux_x86_64/STAR --runThreadN 8 --runMode genomeGenerate --genomeDir Phragmites_RNA/raw_data/Sitalica_index2/ --genomeFastaFiles Phragmites_RNA/raw_data/Sitalica/v2.2/Sitalica_312_v2.fa```
-        
-    ```STAR-2.5.2b/bin/Linux_x86_64/STAR --runThreadN 8 --runMode alignReads --genomeDir Phragmites_RNA/raw_data/Sitalica_index2 --readFilesIn Phragmites_RNA/combined_read/skewer_all_P1.fq Phragmites_RNA/combined_read/skewer_all_P2.fq --outSAMtype BAM SortedByCoordinate --outFileNamePrefix Phragmites_RNA/star_align/skewer --limitBAMsortRAM 62000000000```
-       
-   - Using the generated bam file to perfrom the *S. italica* genome-guided *de novo* transcriptome assembly
-    
-```Trinity --genome_guided_bam Phragmites_RNA/star_align/skewer_Sitalica_align/skewerAligned.sortedByCoord.out.bam --genome_guided_max_intron 10000 --seqType fq --left Phragmites_RNA/combined_read/skewer_all_P1.fq --right Phragmites_RNA/combined_read/skewer_all_P2.fq --SS_lib_type FR --max_memory 50G --CPU 8 --output Phragmites_RNA/trinity_all_skewer_genome_guide```
-        
-- 
+### 2. [*De novo* transcriptome assembly using different tools and parameters](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/De_novo_transcriptome_assembly.md)
 
 
 

@@ -34,7 +34,7 @@ skewer-0.22, Trinity-2.8.4, FastQC v0.11.8, STAR-2.5.2b, shannon-0.02, transabys
 
 ### 5. [Transcriptome annotation](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/Transcriptome_annotation.md)
 
-### 6. [DETs(Differential expressed transcripts) and GO(Gene Ontology) enrichment analyses](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/DETs_and_GO_analyses.md)
+### 6. [DETs and GO enrichment analyses](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/DETs_and_GO_analyses.md)
 
 ### 7. [SSRs and TFs identification](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/SSRs_and_TFs_identification.md)
     

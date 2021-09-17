@@ -11,7 +11,7 @@ Multiple types of tissue were used to construct forty-nine *P. australis* transc
 ## Data
 1. *Phragmites australis* was sampled by the plant phenotypic character from an open field in urban Detrot, MI, US, including four tissues: leaf, shoot meristem, rhizome and inflorescence. A total of 264 million reads of 100bp Illumina paired end RNA-seq data were obtained. PRJNA762483
 3. [*Setaria italica* v2.2 from Phytozome](https://data.jgi.doe.gov/refine-download/phytozome/cladeId:416/All/proteomeId:312/list)
-4. [*Phragmites australis* leaf culm and rhizome tip tissue transcriptome sequence reads from PRJNA314710](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA314710)
+4. [*P. australis* leaf culm and rhizome tip tissue transcriptome sequence reads from PRJNA314710](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA314710)
 5. BUSCO library: [poales_odb10](https://busco-data.ezlab.org/v4/data/lineages/poales_odb10.2019-11-20.tar.gz) and [embryophyta_odb10](https://busco-data.ezlab.org/v4/data/lineages/embryophyta_odb10.2019-11-20.tar.gz)
 6. Uniprot Swiss-Prot (ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz)
 7. Pfam (ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz)
@@ -23,8 +23,8 @@ Multiple types of tissue were used to construct forty-nine *P. australis* transc
 skewer-0.22, Trinity-2.8.4, FastQC v0.11.8, STAR-2.5.2b, shannon-0.02, transabyss-2.0.1, SOAPdenovo-Trans-v1.03, GapCloser-v1.12, bowtie2-2.3.0, CD-HIT-4.8.1, EvidentialGene17dec14, kallisto-0.46.1, ncbi-blast-2.8.1+, DETONATE-1.11, hmmer-3.3, BUSCO 4.0.5, rnaQUAST-2.0.0, q30-master, TransDecoder-v5.5.0, Trinotate-v3.2.1, sqlite-snapshot-202101010144, signalp-4.1g, tmhmm-2.0c, DIAMOND v2.0.6, rsem-1.2.19, Venny, WEGO 2.0, GhostKOALA, MISA v2.1
 
 ## Data Analyses
-### 1. [Before assembly](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/Before_assemly.md)
 
+### 1. [Before assembly](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/Before_assemly.md)
     
 ### 2. [*De novo* transcriptome assembly using different tools and parameters](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/De_novo_transcriptome_assembly.md)
 

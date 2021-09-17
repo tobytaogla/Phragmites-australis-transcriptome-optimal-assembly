@@ -86,6 +86,15 @@
 
 ## 8. Obtain KEGG result from [GhostKOALA](https://www.kegg.jp/ghostkoala/) via using the coding region file; use R script to combine this KEGG result with trinotate_annotation_report_Sitalica.xls, clean the data and output the final annotation csv file.  
 
+## 9. GO annotation is directly generated from Trinotate, [includes top-matching blast matches from SwissProt (and optionally UniRef) and any corresponding Gene Ontology (GO) assignments from the TrEMBL/SwissProt databases](https://github.com/trinityrnaseq/trinityrnaseq/wiki/Running-GOSeq).
+     
+#### a. Use Trinity script to extract GO assgnments per gene
+     
+     trinityrnaseq-Trinity-v2.8.4/util/extract_GO_assignments_from_Trinotate_xls.pl --Trinotate_xls Phragmites_RNA/trinotate_annotation_report_Sitalica.xls -G --include_ancestral_terms > go_annotations.txt
+     
+#### b. Use the GO annotation and [WEGO 2.0](https://wego.genomics.cn/) for visualizing, comparing and plotting GO annotation results
+
+
 
 
      

@@ -3,7 +3,7 @@
       rsem-1.2.19/rsem-prepare-reference --transcript-to-gene-map Phragmites_RNA/transcript_to_gene_map.out --bowtie2 Phragmites_RNA/all_assemlies/renamed_for_abundance/cdhit.fa Phragmites_RNA/rsem/reference/cdhit
       rsem-1.2.19/rsem-calculate-expression -p 8 --paired-end --bowtie2 --estimate-rspd Phragmites_RNA/raw_data/skewer/PR-trimmed-pair1.fastq Phragmites_RNA/raw_data/skewer/PR-trimmed-pair2.fastq Phragmites_RNA/rsem/reference/cdhit Phragmites_RNA/rsem/rsemPR/rsemPR
 	   
-## 2. Use trinity script to run R command for DETs analyses and GO analyses
+## 2. Use trinity script to run R command for DETs(Differential expressed transcripts) analyses and GO(Gene ontology) analyses
 
 #### a. Generate Transcript Expression Matrices
 

@@ -17,7 +17,7 @@ Multiple types of tissue were used to construct forty-nine *P. australis* transc
 7. Pfam (ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz)
 8. [COG (clusters of orthologous genes database)](https://ftp.ncbi.nih.gov/pub/COG/COG2020/data/)
 9. NR (RefSeq non-redundant proteins database) (ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA/nr.gz)
-10. [*Setaria italica* transcription factors list from PlantTFDB v5.0](http://planttfdb.gao-lab.org/download/TF_list/Sit_TF_list.txt.gz)
+10. [*S. italica* transcription factors list from PlantTFDB v5.0](http://planttfdb.gao-lab.org/download/TF_list/Sit_TF_list.txt.gz)
 
 ## Software
 skewer-0.22, Trinity-2.8.4, FastQC v0.11.8, STAR-2.5.2b, shannon-0.02, transabyss-2.0.1, SOAPdenovo-Trans-v1.03, GapCloser-v1.12, bowtie2-2.3.0, CD-HIT-4.8.1, EvidentialGene17dec14, kallisto-0.46.1, ncbi-blast-2.8.1+, DETONATE-1.11, hmmer-3.3, BUSCO 4.0.5, rnaQUAST-2.0.0, q30-master, TransDecoder-v5.5.0, Trinotate-v3.2.1, sqlite-snapshot-202101010144, signalp-4.1g, tmhmm-2.0c, DIAMOND v2.0.6, rsem-1.2.19, Venny, WEGO 2.0, GhostKOALA, MISA v2.1

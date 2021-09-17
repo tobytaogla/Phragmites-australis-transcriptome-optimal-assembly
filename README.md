@@ -30,7 +30,7 @@ skewer-0.22, Trinity-2.8.4, FastQC v0.11.8, STAR-2.5.2b, shannon-0.02, transabys
 
 ### 3. [EvidentialGene pipeline treament](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/EvidentialGene_pipeline_treatment.md)
 
-### 4. [Transcriptome_quality_assessments](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/Transcriptome_quality_assessments.md)
+### 4. [Transcriptome quality assessments](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/Transcriptome_quality_assessments.md)
 
 ### 5. [Transcriptome annotation](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/Transcriptome_annotation.md)
 

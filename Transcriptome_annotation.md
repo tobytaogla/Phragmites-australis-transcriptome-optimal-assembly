@@ -22,7 +22,7 @@
      diamond makedb -p 8 --in cog-20.fa -d cog/cog
      diamond makedb -p 8 --in nr -d nr_db/nr
      
-## 3.. Run the blastx and blastp to align the transcriptome and predicted protein file to Uniprot Swiss-Prot and *S italica* protein file 
+## 3. Run the blastx and blastp to align the transcriptome and predicted protein file to Uniprot Swiss-Prot and *S italica* protein file 
 
 #### a. Uniprot Swiss-Prot
      
@@ -57,6 +57,36 @@
      tmhmm-2.0c/bin/tmhmm --short < Phragmites_RNA/decoder/cdhit.fa.transdecoder.pep > Phragmites_RNA/decoder/tmhmm.out
 
 ## 6. Load above results into a Trinotate SQLite database
+
+#### a. Generate gene to transcript relationship file via rsem, required by Trinotate 
+     	
+     rsem-1.2.19/extract-transcript-to-gene-map-from-trinity Phragmites_RNA/decoder/cdhit.fa Phragmites_RNA/transcript_to_gene_map.out 
+
+#### b. Load transcript and coding region information to the Trinotate SQLite database
+
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite init --gene_trans_map Phragmites_RNA/transcript_to_gene_map.out --transcript_fasta Phragmites_RNA/all_assemlies/cdhit/cdhit.fa --transdecoder_pep Phragmites_RNA/decoder/cdhit.fa.transdecoder.pep
+	
+#### c. Load all the above results from each database to the the Trinotate SQLite database
+	
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite LOAD_swissprot_blastp Phragmites_RNA/decoder/blastp.outfmt6
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite LOAD_swissprot_blastx Phragmites_RNA/decoder/blastx.outfmt6 
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite LOAD_custom_blast --outfmt6 Phragmites_RNA/decoder/Sitalica_blastx.outfmt6 --prog blastx --dbtype Sitablastx 
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite LOAD_custom_blast --outfmt6 Phragmites_RNA/decoder/Sitalica_blastp.outfmt6 --prog blastp --dbtype Sitablastp
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite LOAD_pfam Phragmites_RNA/decoder/hmm_pfam_e3.domtblout
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite LOAD_tmhmm Phragmites_RNA/decoder/tmhmm.out
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite LOAD_signalp Phragmites_RNA/decoder/singalp.out
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite LOAD_custom_blast --outfmt6 Phragmites_RNA/decoder/nr_blastx.outfmt6 --prog blastx --dbtype nrblastx
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite LOAD_custom_blast --outfmt6 Phragmites_RNA/decoder/nr_blastp.outfmt6 --prog blastp --dbtype nrblastp
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite LOAD_custom_blast --outfmt6 Phragmites_RNA/decoder/cog_blastx.outfmt6 --prog blastx --dbtype cogblastx
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite LOAD_custom_blast --outfmt6 Phragmites_RNA/decoder/cog_blastp.outfmt6 --prog blastp --dbtype cogblastp
+     
+## 7. Generate an output of Transcript annotation report
+
+     Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite report -E 1e-3 > Phragmites_RNA/trinotate_annotation_report_Sitalica.xls 
+
+## 8. Obtain KEGG result from [GhostKOALA](https://www.kegg.jp/ghostkoala/) via using the coding region file; use R script to combine the result with trinotate_annotation_report_Sitalica.xls, clean the data and output the final annotation csv file.  
+
+
 
      
 

@@ -84,7 +84,7 @@
 
      Trinotate-Trinotate-v3.2.1/Trinotate Phragmites_RNA/Trinotate.sqlite report -E 1e-3 > Phragmites_RNA/trinotate_annotation_report_Sitalica.xls 
 
-## 8. Obtain KEGG result from [GhostKOALA](https://www.kegg.jp/ghostkoala/) via using the coding region file; use R script to combine the result with trinotate_annotation_report_Sitalica.xls, clean the data and output the final annotation csv file.  
+## 8. Obtain KEGG result from [GhostKOALA](https://www.kegg.jp/ghostkoala/) via using the coding region file; use R script to combine this KEGG result with trinotate_annotation_report_Sitalica.xls, clean the data and output the final annotation csv file.  
 
 
 

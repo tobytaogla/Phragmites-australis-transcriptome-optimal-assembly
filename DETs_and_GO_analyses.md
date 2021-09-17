@@ -7,7 +7,7 @@
 
 #### a. Generate Transcript Expression Matrices
 
-	   trinityrnaseq-Trinity-v2.8.4/util/abundance_estimates_to_matrix.pl --est_method RSEM --gene_trans_map ~/transcript_to_gene_map.out --out_prefix RSEM --name_sample_by_basedir ~/PF/rsemPF.isoforms.results ~/PR/rsemPR.isoforms.results ~/PM/rsemPM.isoforms.results ~/PL/rsemPL.isoforms.results
+     trinityrnaseq-Trinity-v2.8.4/util/abundance_estimates_to_matrix.pl --est_method RSEM --gene_trans_map ~/transcript_to_gene_map.out --out_prefix RSEM --name_sample_by_basedir ~/PF/rsemPF.isoforms.results ~/PR/rsemPR.isoforms.results ~/PM/rsemPM.isoforms.results ~/PL/rsemPL.isoforms.results
 
 #### b. Counting Numbers of Expressed Transcripts
 
@@ -15,7 +15,7 @@
 
 #### c. Generate a heatmap showing the correlation among samples based on expression
 
-	   trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/PtR --save --matrix data/counts/RSEM.isoform.counts.matrix --samples data/counts/samples.txt --log2 --min_rowSums 10 --CPM --sample_cor_matrix --heatmap_colorscheme 'purple,black,yellow' 
+     trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/PtR --save --matrix data/counts/RSEM.isoform.counts.matrix --samples data/counts/samples.txt --log2 --min_rowSums 10 --CPM --sample_cor_matrix --heatmap_colorscheme 'purple,black,yellow' 
 
 #### d. Generate PCA plot showing the correlation among samples
 
@@ -23,11 +23,11 @@
 
 #### e. DETs analyses, using dispersion 0.1, as all the samples do not have replicates
 
-		 trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/run_DE_analysis.pl --matrix data/counts/RSEM.isoform.counts.matrix --method edgeR --samples data/counts/samples.txt --output ~/DE_analysis_dp01 --dispersion 0.1		   
+     trinityrnaseq-Trinity-v2.8.4/Analysis/DifferentialExpression/run_DE_analysis.pl --matrix data/counts/RSEM.isoform.counts.matrix --method edgeR --samples data/counts/samples.txt --output ~/DE_analysis_dp01 --dispersion 0.1		   
 
 #### f. Generate gene_lengths.txt for the GO analyses
 
-		 trinityrnaseq-Trinity-v2.8.4/util/misc/TPM_weighted_gene_length.py --gene_trans_map ~/data/transcript_to_gene_map.out --trans_lengths ~/data/cdhit.fasta.seq_lens --TPM_matrix ~/data/counts/RSEM.isoform.TMM.EXPR.matrix > ~/data/cdhit.gene_lengths.txt
+     trinityrnaseq-Trinity-v2.8.4/util/misc/TPM_weighted_gene_length.py --gene_trans_map ~/data/transcript_to_gene_map.out --trans_lengths ~/data/cdhit.fasta.seq_lens --TPM_matrix ~/data/counts/RSEM.isoform.TMM.EXPR.matrix > ~/data/cdhit.gene_lengths.txt
 		
 #### h. Extract and cluster DETs in pairwise comparison; perform GO analyses at the same time, with foldchnage > 2, pvalue 0.005
 

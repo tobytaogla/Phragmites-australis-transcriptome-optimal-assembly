@@ -38,5 +38,6 @@ skewer-0.22, Trinity-2.8.4, FastQC v0.11.8, STAR-2.5.2b, shannon-0.02, transabys
 
 ### 7. [SSRs and TFs identification](https://github.com/tobytaogla/Phragmites-australis-transcriptome-optimal-assembly/blob/main/SSRs_and_TFs_identification.md)
     
+## [Results for future study reference](https://fanlab.wayne.edu/resource/Phragmite_australis_transcriptome.html) 
 
 

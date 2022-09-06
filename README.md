@@ -44,4 +44,7 @@ skewer-0.22, Trinity-2.8.4, FastQC v0.11.8, STAR-2.5.2b, shannon-0.02, transabys
 ## Results for future study reference
 [Include all seven compared transcriptomes, predicted peptide sequence file, annotation file and results from downstream analyses](https://fanlab.wayne.edu/resource/Phragmite_australis_transcriptome.html) 
 
+## Citation
+Feng Tao, Chuanzhu Fan, Yimin Liu, Subashini Sivakumar, Kurt P. Kowalski, Edward M. Golenberg. Optimization and Application of non-native *Phragmites australis* Transcriptome Assemblies. In review.
+
 

@@ -43,11 +43,11 @@
 #### b. NR database
 
      diamond blastx -p 8 -b 8 -c 1 -q Phragmites_RNA/decoder/cdhit.fa -d nr_db/nr --outfmt 6 -k 1 -e 1e-3 -o Phragmites_RNA/decoder/nr_blastx.outfmt6 2>Phragmites_RNA/decoder/nr_blastx.log
-     diamond blastp -p 8 -b 8 -c 1 -q Phragmites_RNA/decoder/cdhit.fa -d nr_db/nr --outfmt 6 -k 1 -e 1e-3 -o Phragmites_RNA/decoder/nr_blastp.outfmt6 2>Phragmites_RNA/decoder/nr_blastp.log
+     diamond blastp -p 8 -b 8 -c 1 -q Phragmites_RNA/decoder/cdhit.fa.transdecoder.pep -d nr_db/nr --outfmt 6 -k 1 -e 1e-3 -o Phragmites_RNA/decoder/nr_blastp.outfmt6 2>Phragmites_RNA/decoder/nr_blastp.log
     
 #### c. COG database    
    
-     diamond blastx -p 8 -q Phragmites_RNA/decoder/cdhit.fa.transdecoder.pep -d cog/cog --outfmt 6 -k 1 -e 1e-3 -o Phragmites_RNA/decoder/cog_blastx.outfmt6 2>Phragmites_RNA/decoder/cog_blastx.log
+     diamond blastx -p 8 -q Phragmites_RNA/decoder/cdhit.fa -d cog/cog --outfmt 6 -k 1 -e 1e-3 -o Phragmites_RNA/decoder/cog_blastx.outfmt6 2>Phragmites_RNA/decoder/cog_blastx.log
      diamond blastp -p 8 -q Phragmites_RNA/decoder/cdhit.fa.transdecoder.pep -d cog/cog --outfmt 6 -k 1 -e 1e-3 -o Phragmites_RNA/decoder/cog_blastp.outfmt6 2>Phragmites_RNA/decoder/cog_blastp.log 	   
 
 
